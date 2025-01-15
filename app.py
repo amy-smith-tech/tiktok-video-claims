@@ -48,8 +48,6 @@ def run():
     #
 
     data = {
-    "#": 5143,
-    "video_id": 8944450016,
     "video_duration_sec": 46,
     "verified_status": 0,
     "author_ban_status": 0,
@@ -58,6 +56,8 @@ def run():
     "video_share_count": 77939,
     "video_download_count": 5624,
     "video_comment_count": 28}
+
+    data = pd.DataFrame([data])
     
     # Submit Button
     if st.button("Predict claim status"):
