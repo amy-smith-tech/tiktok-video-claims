@@ -11,7 +11,7 @@ REPO_ID = "amy-smith-tech/tiktok-claims-rfc"
 FILENAME = "random_forest_model_amy.joblib"
 
 # Helper function for prediction
-def predict_review(review_text):
+def predict_review(input):
     
     # Predict sentiment
     model_path = hf_hub_download(repo_id=REPO_ID, filename=FILENAME)
@@ -22,8 +22,8 @@ def predict_review(review_text):
     #
     #
     
-    prediction = model.predict(review_text)
-    prediction_prob = model.predict_proba(review_text)[0]
+    prediction = model.predict(input)
+    prediction_prob = model.predict_proba(input)[0]
     
     return prediction, prediction_prob
 
@@ -57,20 +57,19 @@ def run():
     "video_like_count": 269442,
     "video_share_count": 77939,
     "video_download_count": 5624,
-    "video_comment_count": 28
-}
+    "video_comment_count": 28}
     
     # Submit Button
     if st.button("Predict claim status"):
         if user_review.strip():
             # Make prediction
             prediction, prediction_prob = predict_review(data)
-            sentiment = "Claim" if prediction == 1 else "Opinion"
+            claim = "Claim" if prediction == 1 else "Opinion"
             prob_positive = round(prediction_prob[1] * 100, 2)
             prob_negative = round(prediction_prob[0] * 100, 2)
     
             # Display Results
-            st.markdown(f"### Sentiment: **{sentiment}**")
+            st.markdown(f"### Claim: **{claim}**")
             st.markdown(f"**Confidence:** {prob_positive}% Claim, {prob_negative}% Opinion")
             
             # Plotly Bar Chart for Probabilities
@@ -85,17 +84,17 @@ def run():
             ])
             fig.update_layout(
                 title="Prediction Probabilities",
-                xaxis_title="Sentiment",
+                xaxis_title="Claim or Opinion",
                 yaxis_title="Probability (%)",
                 template="plotly_white"
             )
             st.plotly_chart(fig)
             
             st.info(
-                "Sentiment prediction is based on trained machine learning algorithms using advanced text processing techniques."
+                "Prediction is based on trained machine learning algorithms using advanced text processing techniques."
             )
         else:
-            st.error("Please enter a valid review before clicking 'Predict Sentiment'.")
+            st.error("Please enter a valid review before clicking 'Predict'.")
     
     # Footer
     st.markdown("---")
