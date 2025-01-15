@@ -5,7 +5,7 @@ import plotly.graph_objects as go
 from huggingface_hub import hf_hub_download
 import joblib
 
-from utils import Preprocessor
+from utils import Preprocessor # update the preprocessing pipeline in utils.py
 
 # REPO_ID = "michael-map/tripadvisor-nlp-rfc"
 # FILENAME = "random_forest_model.joblib"
@@ -18,6 +18,12 @@ def predict_review(review_text):
     # Predict sentiment
     model_path = hf_hub_download(repo_id=REPO_ID, filename=FILENAME)
     model = joblib.load(model_path)
+
+    #TODO : read a pandas dataframe of inputs to the model
+    #
+    #
+    #
+    
     prediction = model.predict(pd.Series(review_text))
     prediction_prob = model.predict_proba(pd.Series(review_text))[0]
     
@@ -35,26 +41,31 @@ def run():
     st.markdown("### Enter Your Claim Report")
     user_review = st.text_area(
         "Type or paste a claim report review below to predict its claim status.",
-        placeholder=".i think that drone deliveries are already happening and will become common by 2025",
+        placeholder="i think that drone deliveries are already happening and will become common by 2025",
     )
+
+    # TODO: Add widgets to obtain information about the Tiktok video
+    #
+    #
+    #
     
     # Submit Button
     if st.button("Predict claim status"):
         if user_review.strip():
             # Make prediction
             prediction, prediction_prob = predict_review(user_review)
-            sentiment = "Positive" if prediction == 1 else "Negative"
+            sentiment = "Claim" if prediction == 1 else "Opinion"
             prob_positive = round(prediction_prob[1] * 100, 2)
             prob_negative = round(prediction_prob[0] * 100, 2)
     
             # Display Results
             st.markdown(f"### Sentiment: **{sentiment}**")
-            st.markdown(f"**Confidence:** {prob_positive}% Positive, {prob_negative}% Negative")
+            st.markdown(f"**Confidence:** {prob_positive}% Claim, {prob_negative}% Opinion")
             
             # Plotly Bar Chart for Probabilities
             fig = go.Figure(data=[
                 go.Bar(
-                    x=["Positive", "Negative"],
+                    x=["Opinion", "Claim"],
                     y=[prob_positive, prob_negative],
                     text=[f"{prob_positive}%", f"{prob_negative}%"],
                     textposition='auto',
