@@ -10,34 +10,6 @@ from utils import Preprocessor
 REPO_ID = "michael-map/tripadvisor-nlp-rfc"
 FILENAME = "random_forest_model.joblib"
 
-# def run():
-#     """Loads the model from Hugging Face Hub."""
-    
-#     model_path = hf_hub_download(repo_id=REPO_ID, filename=FILENAME)
-#     model = joblib.load(model_path)
-
-#     st.title("Sentiment Analysis")
-#     st.text("Basic app to detect the sentiment of text. :)")
-#     st.text("")
-#     userinput = st.text_input('Enter text below, then click the Predict button.', placeholder='Input text HERE')
-#     st.text("")
-#     predicted_sentiment = ""
-#     if st.button("Predict"):
-#         predicted_sentiment = model.predict(pd.Series(userinput))
-#         if predicted_sentiment == 1:
-#             output = 'positive 👍'
-#         else:
-#             output = 'negative 👎'
-#         sentiment=f'Predicted sentiment of "{userinput}" is {output}.'
-#         st.success(sentiment)
-
-
-import streamlit as st
-import pandas as pd
-import numpy as np
-import joblib
-
-
 # Helper function for prediction
 def predict_review(review_text):
     
@@ -51,21 +23,21 @@ def predict_review(review_text):
 
 def run():
     # Streamlit UI
-    st.set_page_config(page_title="Hotel Review Sentiment Predictor", layout="centered")
+    st.set_page_config(page_title="TikTok Claims Predictor", layout="centered")
     
     # Header
-    st.title("Hotel Review Sentiment Predictor")
-    st.subheader("Analyze and predict the sentiment of hotel reviews.")
+    st.title("TikTok Claims Predictor")
+    st.subheader("Analyze and predict the claims of TikTok videos.")
     
     # User Input
-    st.markdown("### Enter Your Review")
+    st.markdown("### Enter Your Claim Report")
     user_review = st.text_area(
-        "Type or paste a hotel review below to predict its sentiment.",
-        placeholder="The room was clean, and the service was excellent!",
+        "Type or paste a claim report review below to predict its claim status.",
+        placeholder=".i think that drone deliveries are already happening and will become common by 2025",
     )
     
     # Submit Button
-    if st.button("Predict Sentiment"):
+    if st.button("Predict claim status"):
         if user_review.strip():
             # Make prediction
             prediction, prediction_prob = predict_review(user_review)
@@ -107,3 +79,50 @@ def run():
 
 if __name__ == "__main__":
     run()
+
+"""
+    Scrap code
+"""
+
+# from random import randint
+
+# import altair as alt
+# import pandas as pd
+# import streamlit as st
+
+# # Input widgets
+# side_options = [6, 10, 12, 20]
+# num_sides = st.sidebar.radio("Number of sides:", side_options)
+# num_dice = st.sidebar.slider("Number of dice:", 1, 10, value=2)
+# num_rolls_sim = st.sidebar.slider("Number of rolls in simulation",
+#         1_000, 100_000, value=1_000, step=1_000)
+
+# # Roll calculation
+# rolls = [randint(1, num_sides) for _ in range(num_dice)]
+# roll = sum(rolls)
+
+# # Simulation rolls
+# sim_rolls = []
+# for _ in range(num_rolls_sim):
+#     sim_roll = sum(
+#         [randint(1, num_sides) for _ in range(num_dice)])
+#     sim_rolls.append(sim_roll)
+# df_sim = pd.DataFrame({"rolls": sim_rolls})
+
+# # Create histogram
+# chart = alt.Chart(df_sim).mark_bar().encode(
+#     alt.X("rolls", bin=True),
+#     y="count()",
+# )
+# chart.title = f"Simulation of {num_rolls_sim} rolls"
+
+# # Main page
+# st.title("Rolling Dice")
+# st.button("Roll!")
+
+# st.write("---")
+# st.subheader(roll)
+# st.write(str(rolls))
+
+# st.write("---")
+# st.altair_chart(chart)
