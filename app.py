@@ -7,8 +7,10 @@ import joblib
 
 from utils import Preprocessor
 
-REPO_ID = "michael-map/tripadvisor-nlp-rfc"
-FILENAME = "random_forest_model.joblib"
+# REPO_ID = "michael-map/tripadvisor-nlp-rfc"
+# FILENAME = "random_forest_model.joblib"
+REPO_ID = "amy-smith-tech/tiktok-claims-rfc"
+FILENAME = "random_forest_model_amy.joblib"
 
 # Helper function for prediction
 def predict_review(review_text):
