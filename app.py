@@ -5,10 +5,8 @@ import plotly.graph_objects as go
 from huggingface_hub import hf_hub_download
 import joblib
 
-from utils import Preprocessor # update the preprocessing pipeline in utils.py
+# from utils import Preprocessor # update the preprocessing pipeline in utils.py
 
-# REPO_ID = "michael-map/tripadvisor-nlp-rfc"
-# FILENAME = "random_forest_model.joblib"
 REPO_ID = "amy-smith-tech/tiktok-claims-rfc"
 FILENAME = "random_forest_model_amy.joblib"
 
@@ -24,8 +22,8 @@ def predict_review(review_text):
     #
     #
     
-    prediction = model.predict(pd.Series(review_text))
-    prediction_prob = model.predict_proba(pd.Series(review_text))[0]
+    prediction = model.predict(review_text)
+    prediction_prob = model.predict_proba(review_text)[0]
     
     return prediction, prediction_prob
 
@@ -48,12 +46,25 @@ def run():
     #
     #
     #
+
+    data = {
+    "#": 5143,
+    "video_id": 8944450016,
+    "video_duration_sec": 46,
+    "verified_status": 0,
+    "author_ban_status": 0,
+    "video_view_count": 532092,
+    "video_like_count": 269442,
+    "video_share_count": 77939,
+    "video_download_count": 5624,
+    "video_comment_count": 28
+}
     
     # Submit Button
     if st.button("Predict claim status"):
         if user_review.strip():
             # Make prediction
-            prediction, prediction_prob = predict_review(user_review)
+            prediction, prediction_prob = predict_review(data)
             sentiment = "Claim" if prediction == 1 else "Opinion"
             prob_positive = round(prediction_prob[1] * 100, 2)
             prob_negative = round(prediction_prob[0] * 100, 2)
