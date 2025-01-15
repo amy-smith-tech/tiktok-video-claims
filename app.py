@@ -75,7 +75,7 @@ def run():
             # Plotly Bar Chart for Probabilities
             fig = go.Figure(data=[
                 go.Bar(
-                    x=["Opinion", "Claim"],
+                    x=["Claim", "Opinion"],
                     y=[prob_positive, prob_negative],
                     text=[f"{prob_positive}%", f"{prob_negative}%"],
                     textposition='auto',
