@@ -100,7 +100,7 @@ def run():
     
     # Footer
     st.markdown("---")
-    st.markdown("Developed with ❤️ using Streamlit | © 2024 Hotel Insights AI")
+    st.markdown("Developed with ❤️ using Streamlit | © 2025 Amy Smith Tech AI")
 
 if __name__ == "__main__":
     run()
