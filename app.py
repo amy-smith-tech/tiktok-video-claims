@@ -70,7 +70,7 @@ def run():
     
             # Display Results
             st.markdown(f"### Claim: **{claim}**")
-            st.markdown(f"**Confidence:** {prob_positive}% Claim, {prob_negative}% Opinion")
+            st.markdown(f"**Confidence:** {prob_positive}% Opinion, {prob_negative}% Claim")
             
             # Plotly Bar Chart for Probabilities
             fig = go.Figure(data=[
@@ -79,7 +79,7 @@ def run():
                     y=[prob_positive, prob_negative],
                     text=[f"{prob_positive}%", f"{prob_negative}%"],
                     textposition='auto',
-                    marker=dict(color=['green', 'red'])
+                    marker=dict(color=['red', 'green'])
                 )
             ])
             fig.update_layout(
@@ -91,7 +91,7 @@ def run():
             st.plotly_chart(fig)
             
             st.info(
-                "Prediction is based on trained machine learning algorithms using advanced text processing techniques."
+                "Reporting a claim is an important tool for maintaining a safe and respectful environment on social media platforms."
             )
         else:
             st.error("Please enter a valid review before clicking 'Predict'.")
