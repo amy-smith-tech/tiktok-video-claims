@@ -5,18 +5,16 @@ import re
 
 from huggingface_hub import hf_hub_download
 import joblib
-import altair as alt
 
 #######################
 # Page configuration
 st.set_page_config(
-    page_title="TikTok Content Moderation",
+    page_title="Dark Theme Example",
+    # page_title="TikTok Content Moderation",
     page_icon="🎥",
     layout="wide",
     initial_sidebar_state="expanded"
 )
-
-alt.themes.enable("dark")
 
 # Change RepoID and model filename here
 REPO_ID = "amy-smith-tech/tiktok-claims-rfc"
