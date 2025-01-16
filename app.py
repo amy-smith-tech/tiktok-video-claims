@@ -40,14 +40,14 @@ def run():
     ban_options = [0, 1]
 
     # Added customization: Add widgets to obtain information about the Tiktok video
-    video_duration_sec = st.sidebar.slider("Video duration sec:", 1, 60, value=46)
+    video_duration_sec = st.sidebar.slider("Video duration sec:", 1, 60, value=1)
     verified_status = st.sidebar.radio("Verified Options", verified_options)
     ban_status = st.sidebar.radio("Ban status:", ban_options)
-    video_view_count = st.sidebar.slider("Video view counts:", 1, 1000000, value=532092)
-    video_like_count = st.sidebar.slider("Video like counts:", 1, 700000, value=269442)
-    video_share_count = st.sidebar.slider("Video share counts:", 1, 700000, value=77939)
-    video_download_count = st.sidebar.slider("Video download counts:", 1, 15000, value=5624)
-    video_comment_count = st.sidebar.slider("Video comment counts:", 1, 10000, value=28)
+    video_view_count = st.sidebar.slider("Video view counts:", 1, 1000000, value=1)
+    video_like_count = st.sidebar.slider("Video like counts:", 1, 700000, value=1)
+    video_share_count = st.sidebar.slider("Video share counts:", 1, 700000, value=1)
+    video_download_count = st.sidebar.slider("Video download counts:", 1, 15000, value=1)
+    video_comment_count = st.sidebar.slider("Video comment counts:", 1, 10000, value=1)
 
     data = {
     "video_duration_sec": video_duration_sec,
