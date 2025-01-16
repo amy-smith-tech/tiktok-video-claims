@@ -64,7 +64,7 @@ def run():
         if user_review.strip():
             # Make prediction
             prediction, prediction_prob = predict_review(data)
-            claim = "Claim" if prediction == 1 else "Opinion"
+            claim = "Opinion" if prediction == 1 else "Claim"
             prob_positive = round(prediction_prob[1] * 100, 2)
             prob_negative = round(prediction_prob[0] * 100, 2)
     
@@ -75,7 +75,7 @@ def run():
             # Plotly Bar Chart for Probabilities
             fig = go.Figure(data=[
                 go.Bar(
-                    x=["Claim", "Opinion"],
+                    x=["Opinion", "Claim"],
                     y=[prob_positive, prob_negative],
                     text=[f"{prob_positive}%", f"{prob_negative}%"],
                     textposition='auto',
