@@ -8,12 +8,15 @@ import joblib
 
 import streamlit as st
 
-st.set_page_config(page_title="Dark Theme Example", layout="wide")
+st.set_page_config(
+    page_title="US Population Dashboard",
+    page_icon="🏂",
+    layout="wide",
+    initial_sidebar_state="expanded")
 
 # Example content
 st.title("Dark Theme Streamlit App")
 st.write("This app uses the dark theme!")
-
 
 # # Change RepoID and model filename here
 # REPO_ID = "amy-smith-tech/tiktok-claims-rfc"
