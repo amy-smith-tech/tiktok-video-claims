@@ -37,10 +37,9 @@ def run():
         "Electric cars are the future of transportation."
     ]
     
-    
     # Example Selector
     st.markdown("### Enter or Choose a Claim Report")
-    user_review = st.selectbox("Choose an example claim (or type your own below):", [""] + example_claims)
+    selected_example = st.selectbox("Choose an example claim (or type your own below):", [""] + example_claims)
     
     # User Input
     st.markdown("### Enter Your Claim Report")
