@@ -7,7 +7,7 @@ import joblib
 
 # Change RepoID and model filename here
 REPO_ID = "amy-smith-tech/tiktok-claims-rfc"
-FILENAME = "random_forest_model_amy.joblib"
+FILENAME = "random_forest_model_v2.joblib"
 
 # Helper function for prediction
 def predict_review(input):
