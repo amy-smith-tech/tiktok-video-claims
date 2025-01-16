@@ -37,15 +37,14 @@ def run():
         "Electric cars are the future of transportation."
     ]
     
-    user_review = ["", ""]
     
     # Example Selector
     st.markdown("### Enter or Choose a Claim Report")
-    user_review[0] = st.selectbox("Choose an example claim (or type your own below):", [""] + example_claims)
+    user_review = st.selectbox("Choose an example claim (or type your own below):", [""] + example_claims)
     
     # User Input
     st.markdown("### Enter Your Claim Report")
-    user_review[1] = st.text_area(
+    user_review = st.text_area(
         "Type or paste a claim report review below to predict its claim status.",
         value=selected_example,
         placeholder="i think that drone deliveries are already happening and will become common by 2025",
@@ -78,7 +77,7 @@ def run():
     
     # Submit Button
     if st.button("Predict claim status"):
-        if max(user_review, key=len).strip():
+        if user_review.strip():
             # Make prediction
             prediction, prediction_prob = predict_review(data)
             claim = "Opinion" if prediction == 1 else "Claim"
