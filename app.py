@@ -44,9 +44,10 @@ def run():
 
     verified_options = [0, 1]
     ban_options = [0, 1]
+    
     video_duration_sec = st.sidebar.slider("Video duration sec:", 1, 100, value=46)
-    verified_status = st.sidebar.radio("Number of sides:", verified_options)
-    ban_status = st.sidebar.radio("Number of sides:", ban_options)
+    verified_status = st.sidebar.radio("Verified Options", verified_options)
+    ban_status = st.sidebar.radio("Ban status:", ban_options)
 
     # TODO: Add widgets to obtain information about the Tiktok video
     #
