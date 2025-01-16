@@ -42,15 +42,21 @@ def run():
         placeholder="i think that drone deliveries are already happening and will become common by 2025",
     )
 
+    verified_options = [0, 1]
+    ban_options = [0, 1]
+    video_duration_sec = st.sidebar.slider("Video duration sec:", 1, 100, value=46)
+    verified_status = st.sidebar.radio("Number of sides:", verified_options)
+    ban_status = st.sidebar.radio("Number of sides:", ban_options)
+
     # TODO: Add widgets to obtain information about the Tiktok video
     #
     #
     #
 
     data = {
-    "video_duration_sec": 46,
-    "verified_status": 0,
-    "author_ban_status": 0,
+    "video_duration_sec": video_duration_sec,
+    "verified_status": verified_status,
+    "author_ban_status": ban_status,
     "video_view_count": 532092,
     "video_like_count": 269442,
     "video_share_count": 77939,
