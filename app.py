@@ -6,6 +6,17 @@ import re
 from huggingface_hub import hf_hub_download
 import joblib
 
+#######################
+# Page configuration
+st.set_page_config(
+    page_title="TikTok Content Moderation",
+    page_icon="🎥",
+    #layout="wide",
+    #initial_sidebar_state="expanded"
+)
+
+alt.themes.enable("dark")
+
 # Change RepoID and model filename here
 REPO_ID = "amy-smith-tech/tiktok-claims-rfc"
 FILENAME = "random_forest_model_v2.joblib"
