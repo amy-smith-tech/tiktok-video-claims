@@ -36,7 +36,9 @@ def run():
         "I read that the moon landing was fake.",
         "Electric cars are the future of transportation."
     ]
-    user_review = list()
+    
+    user_review = ["", ""]
+    
     # Example Selector
     st.markdown("### Enter or Choose a Claim Report")
     user_review[0] = st.selectbox("Choose an example claim (or type your own below):", [""] + example_claims)
