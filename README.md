@@ -6,5 +6,5 @@ However, this process generates a large number of reports that are challenging t
 
 ---
 
-## Deplyed Application
+## Deployed Application
 https://tiktok-video-claims.streamlit.app/
