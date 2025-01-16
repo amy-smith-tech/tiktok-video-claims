@@ -16,12 +16,6 @@ def predict_review(input):
     # Predict sentiment
     model_path = hf_hub_download(repo_id=REPO_ID, filename=FILENAME)
     model = joblib.load(model_path)
-
-    #TODO : read a pandas dataframe of inputs to the model
-    #
-    #
-    #
-    
     prediction = model.predict(input)
     prediction_prob = model.predict_proba(input)[0]
     
@@ -44,22 +38,23 @@ def run():
 
     verified_options = [0, 1]
     ban_options = [0, 1]
-    
-    video_duration_sec = st.sidebar.slider("Video duration sec:", 1, 100, value=46)
+
+    # Added customization: Add widgets to obtain information about the Tiktok video
+    video_duration_sec = st.sidebar.slider("Video duration sec:", 1, 60, value=46)
     verified_status = st.sidebar.radio("Verified Options", verified_options)
     ban_status = st.sidebar.radio("Ban status:", ban_options)
-
-    # TODO: Add widgets to obtain information about the Tiktok video
-    #
-    #
-    #
+    video_view_count = st.sidebar.slider("Video view counts:", 1, 1000000, value=532092)
+    video_like_count = st.sidebar.slider("Video like counts:", 1, 700000, value=269442)
+    video_share_count = st.sidebar.slider("Video share counts:", 1, 700000, value=77939)
+    video_download_count = st.sidebar.slider("Video download counts:", 1, 15000, value=5624)
+    video_comment_count = st.sidebar.slider("Video comment counts:", 1, 10000, value=28)
 
     data = {
     "video_duration_sec": video_duration_sec,
     "verified_status": verified_status,
     "author_ban_status": ban_status,
-    "video_view_count": 532092,
-    "video_like_count": 269442,
+    "video_view_count": video_view_count,
+    "video_like_count": video_like_count,
     "video_share_count": 77939,
     "video_download_count": 5624,
     "video_comment_count": 28}
@@ -109,50 +104,3 @@ def run():
 
 if __name__ == "__main__":
     run()
-
-"""
-    Scrap code
-"""
-
-# from random import randint
-
-# import altair as alt
-# import pandas as pd
-# import streamlit as st
-
-# # Input widgets
-# side_options = [6, 10, 12, 20]
-# num_sides = st.sidebar.radio("Number of sides:", side_options)
-# num_dice = st.sidebar.slider("Number of dice:", 1, 10, value=2)
-# num_rolls_sim = st.sidebar.slider("Number of rolls in simulation",
-#         1_000, 100_000, value=1_000, step=1_000)
-
-# # Roll calculation
-# rolls = [randint(1, num_sides) for _ in range(num_dice)]
-# roll = sum(rolls)
-
-# # Simulation rolls
-# sim_rolls = []
-# for _ in range(num_rolls_sim):
-#     sim_roll = sum(
-#         [randint(1, num_sides) for _ in range(num_dice)])
-#     sim_rolls.append(sim_roll)
-# df_sim = pd.DataFrame({"rolls": sim_rolls})
-
-# # Create histogram
-# chart = alt.Chart(df_sim).mark_bar().encode(
-#     alt.X("rolls", bin=True),
-#     y="count()",
-# )
-# chart.title = f"Simulation of {num_rolls_sim} rolls"
-
-# # Main page
-# st.title("Rolling Dice")
-# st.button("Roll!")
-
-# st.write("---")
-# st.subheader(roll)
-# st.write(str(rolls))
-
-# st.write("---")
-# st.altair_chart(chart)
