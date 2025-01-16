@@ -5,6 +5,7 @@ import re
 
 from huggingface_hub import hf_hub_download
 import joblib
+import altair as alt
 
 #######################
 # Page configuration
