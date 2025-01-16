@@ -27,11 +27,24 @@ def run():
     # Header
     st.title("TikTok Claims Predictor")
     st.subheader("Analyze and predict the claims of TikTok videos.")
+
+    # Examples for testing
+    example_claims = [
+        "Drone deliveries are already happening and will become common by 2025.",
+        "AI is taking over jobs faster than we expected.",
+        "This product is amazing; everyone should try it!",
+        "I read that the moon landing was fake.",
+        "Electric cars are the future of transportation."
+    ]
+    # Example Selector
+    st.markdown("### Enter or Choose a Claim Report")
+    selected_example = st.selectbox("Choose an example claim (or type your own below):", [""] + example_claims)
     
     # User Input
     st.markdown("### Enter Your Claim Report")
     user_review = st.text_area(
         "Type or paste a claim report review below to predict its claim status.",
+        value=selected_example,
         placeholder="i think that drone deliveries are already happening and will become common by 2025",
     )
 
