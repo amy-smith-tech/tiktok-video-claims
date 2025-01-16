@@ -6,14 +6,9 @@ import re
 from huggingface_hub import hf_hub_download
 import joblib
 
-#######################
-# Page configuration
 st.set_page_config(
-    page_title="Dark Theme Example",
-    # page_title="TikTok Content Moderation",
-    page_icon="🎥",
-    layout="wide",
-    initial_sidebar_state="expanded"
+    page_title="TikTok Content Moderation",
+    page_icon="🎥"
 )
 
 # Change RepoID and model filename here
