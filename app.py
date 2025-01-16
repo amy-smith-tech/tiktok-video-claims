@@ -31,18 +31,17 @@ def run():
     # Examples for testing
     example_claims = [
         "Drone deliveries are already happening and will become common by 2025.",
-        "AI is taking over jobs faster than we expected.",
-        "This product is amazing; everyone should try it!",
-        "I read that the moon landing was fake.",
-        "Electric cars are the future of transportation."
+        "someone shared with me that there are more microorganisms in one teaspoon of soil than people on the planet",
+        "I think that 90% of goods are shipped by ocean freight",
+        "i think that 20% of the world's oxygen is produced in the amazon jungles",
+        "someone shared with me that american industrialist andrew carnegie had a net worth of $475 million usd, worth over $300 billion usd today"
     ]
     
     # Example Selector
-    st.markdown("### Enter or Choose a Claim Report")
+    st.markdown("### Choose or Enter a Claim Report")
     selected_example = st.selectbox("Choose an example claim (or type your own below):", [""] + example_claims)
     
     # User Input
-    st.markdown("### Enter Your Claim Report")
     user_review = st.text_area(
         "Type or paste a claim report review below to predict its claim status.",
         value=selected_example,
