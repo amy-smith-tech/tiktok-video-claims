@@ -6,7 +6,6 @@ import re
 from huggingface_hub import hf_hub_download
 import joblib
 
-st.set_page_config(page_icon="🎥")
 
 # Change RepoID and model filename here
 REPO_ID = "amy-smith-tech/tiktok-claims-rfc"
