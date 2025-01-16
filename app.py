@@ -5,15 +5,14 @@ import plotly.graph_objects as go
 from huggingface_hub import hf_hub_download
 import joblib
 
-# from utils import Preprocessor # update the preprocessing pipeline in utils.py
-
+# Change RepoID and model filename here
 REPO_ID = "amy-smith-tech/tiktok-claims-rfc"
 FILENAME = "random_forest_model_amy.joblib"
 
 # Helper function for prediction
 def predict_review(input):
     
-    # Predict sentiment
+    # Predict on your review claims here
     model_path = hf_hub_download(repo_id=REPO_ID, filename=FILENAME)
     model = joblib.load(model_path)
     prediction = model.predict(input)
@@ -55,9 +54,9 @@ def run():
     "author_ban_status": ban_status,
     "video_view_count": video_view_count,
     "video_like_count": video_like_count,
-    "video_share_count": 77939,
-    "video_download_count": 5624,
-    "video_comment_count": 28}
+    "video_share_count": video_share_count,
+    "video_download_count": video_download_count,
+    "video_comment_count": video_comment_count}
 
     data = pd.DataFrame([data])
     
