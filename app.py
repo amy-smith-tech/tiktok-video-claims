@@ -93,7 +93,7 @@ def run():
         if user_review.strip():
             # Make prediction
             prediction, prediction_prob = predict_review(data)
-            claim = "Opinion" if prediction == 1 else "Claim"
+            claim = prediction
             prob_positive = round(prediction_prob[1] * 100, 2)
             prob_negative = round(prediction_prob[0] * 100, 2)
     
