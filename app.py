@@ -9,6 +9,11 @@ import joblib
 REPO_ID = "amy-smith-tech/tiktok-claims-rfc"
 FILENAME = "random_forest_model_v2.joblib"
 
+opinion_keywords = ["think", "feel", "opinion", "believe"] # words that likely appear in opinions
+claim_keywords = ["shared"] # words that likely appear in claims
+opinion_keywords = r"|".join(opinion_keywords)
+claim_keywords = r"|".join(claim_keywords)
+
 # Helper function for prediction
 def predict_review(input):
     
@@ -61,6 +66,11 @@ def run():
     video_download_count = st.sidebar.slider("Video download counts:", 1, 15000, value=1)
     video_comment_count = st.sidebar.slider("Video comment counts:", 1, 10000, value=1)
 
+    pattern = opinion_keywords
+    video_opinion_kw_count = user_review.count(pattern)
+    pattern = claim_keywords
+    video_claim_kw_count = user_review.count(pattern)
+    
     data = {
     "video_duration_sec": video_duration_sec,
     "verified_status": verified_status,
@@ -69,7 +79,10 @@ def run():
     "video_like_count": video_like_count,
     "video_share_count": video_share_count,
     "video_download_count": video_download_count,
-    "video_comment_count": video_comment_count}
+    "video_comment_count": video_comment_count,
+    "video_opinion_kw_count": video_opinion_kw_count,
+    "video_claim_kw_count": video_claim_kw_count,
+    "video_transcription_len": user_review.len()}
 
     data = pd.DataFrame([data])
     
