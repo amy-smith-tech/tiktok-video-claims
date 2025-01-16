@@ -66,10 +66,11 @@ def run():
     video_download_count = st.sidebar.slider("Video download counts:", 1, 15000, value=1)
     video_comment_count = st.sidebar.slider("Video comment counts:", 1, 10000, value=1)
 
+    # Count occurrences of keywords
     pattern = opinion_keywords
-    video_opinion_kw_count = user_review.count(pattern)
+    video_opinion_kw_count = len(re.findall(pattern, user_review, flags=re.IGNORECASE))
     pattern = claim_keywords
-    video_claim_kw_count = user_review.count(pattern)
+    video_claim_kw_count = len(re.findall(pattern, user_review, flags=re.IGNORECASE))
     
     data = {
     "video_duration_sec": video_duration_sec,
@@ -82,7 +83,7 @@ def run():
     "video_comment_count": video_comment_count,
     "video_opinion_kw_count": video_opinion_kw_count,
     "video_claim_kw_count": video_claim_kw_count,
-    "video_transcription_len": user_review.len()}
+    "video_transcription_len": len(user_review)}
 
     data = pd.DataFrame([data])
     
